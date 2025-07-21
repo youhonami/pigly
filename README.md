@@ -34,9 +34,9 @@
 
 **Docker ビルド**
 
-1. https://github.com/youhonami/modan1.git
+1. https://github.com/youhonami/pigly.git
 
-   - ターミナルで git clone git@github.com:youhonami/modan1.git を実行
+   - ターミナルで git clone git@github.com:youhonami/pigly.git を実行
    - リモートリポジトリを作成
    - ターミナルで git remote set-url origin 新規リポジトリの紐付け先リンク　を実行
    - ターミナルで git remote -v を実行。変更を確認。
