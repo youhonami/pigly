@@ -1,0 +1,81 @@
+body {
+    background: linear-gradient(to bottom right, #fcd5ec, #fad0c4);
+    font-family: "Arial", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.auth-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    color: #db63b2;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.step {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+button {
+    background: linear-gradient(to right, #a18cd1, #fbc2eb);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+a {
+    display: block;
+    margin-top: 15px;
+    color: #4c4cff;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+}
+
+a:hover {
+    text-decoration: underline;
+}
