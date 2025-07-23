@@ -22,11 +22,31 @@
     </div>
 
     <form method="GET" action="{{ route('index') }}" class="search-form">
-        <input type="date" name="from" value="{{ request('from') }}">
-        〜
-        <input type="date" name="to" value="{{ request('to') }}">
-        <button type="submit">検索</button>
+        <div class="search-left">
+            <input type="date" name="from" value="{{ request('from') }}">
+            〜
+            <input type="date" name="to" value="{{ request('to') }}">
+            <button type="submit" class="btn-search">検索</button>
+
+            @if(request('from') || request('to'))
+            <a href="{{ route('index') }}" class="btn-reset">リセット</a>
+            @endif
+        </div>
+
+        <div class="search-right">
+            <a href="{{ route('weight.create') }}" class="btn-add">データ追加</a>
+        </div>
     </form>
+
+
+    @if(request('from') || request('to'))
+    <p class="search-summary">
+        {{ request('from') }} 〜 {{ request('to') }} の検索結果　
+        {{ $weightLogs->total() }}件
+    </p>
+    @endif
+
+
 
     <div class="log-table">
         <table>
@@ -60,6 +80,6 @@
         {{ $weightLogs->links('pagination::bootstrap-4') }}
     </div>
 
-    <a href="{{ route('weight.create') }}" class="btn-add">データ追加</a>
+
 </div>
 @endsection

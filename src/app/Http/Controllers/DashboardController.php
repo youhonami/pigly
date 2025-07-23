@@ -8,7 +8,7 @@ use App\Models\WeightLog;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
 
@@ -23,8 +23,20 @@ class DashboardController extends Controller
             ? number_format($targetWeight - $latestWeight, 1)
             : null;
 
-        // ログ一覧（ページネーション）
-        $weightLogs = $user->weightLogs()->latest('date')->paginate(10);
+        // weightLogsを検索条件付きで取得
+        $query = $user->weightLogs()->latest('date');
+
+        // 期間検索条件（from〜to）がある場合に適用
+        if ($request->filled('from')) {
+            $query->where('date', '>=', $request->input('from'));
+        }
+
+        if ($request->filled('to')) {
+            $query->where('date', '<=', $request->input('to'));
+        }
+
+        // ページネーション
+        $weightLogs = $query->paginate(10)->appends($request->all());
 
         return view('index', compact(
             'targetWeight',
