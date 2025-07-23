@@ -15,8 +15,10 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <input type="email" name="email" required />
-            <input type="password" name="password" required />
+            <label for="email">メールアドレス</label>
+            <input type="email" name="email" placeholder="メールアドレスを入力" required />
+            <label for="password">パスワード</label>
+            <input type="password" name="password" placeholder="パスワードを入力" required />
             <button type="submit">ログイン</button>
         </form>
 

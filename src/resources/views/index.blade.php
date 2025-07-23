@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
@@ -6,8 +6,6 @@
 
 @section('content')
 <div class="container">
-    <h1 class="logo">PiGLy</h1>
-
     <div class="dashboard-summary">
         <div class="summary-box">
             <p>目標体重</p>
@@ -52,6 +50,7 @@
                         <a href="{{ route('weight.edit', $log->id) }}">
                             <img src="{{ asset('images/edit-icon.svg') }}" alt="編集" />
                         </a>
+
                     </td>
                 </tr>
                 @endforeach
