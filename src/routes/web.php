@@ -53,3 +53,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/weight/{id}/edit', [WeightLogController::class, 'edit'])->name('weight.edit');
     Route::put('/weight/{id}', [WeightLogController::class, 'update'])->name('weight.update');
 });
+
+Route::delete('/weight/{id}', [WeightLogController::class, 'destroy'])->name('weight.destroy');

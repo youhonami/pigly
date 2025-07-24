@@ -60,6 +60,11 @@
     text-align: center;
     font-weight: bold;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.btn-cancel:hover {
+    text-decoration: none;
 }
 
 /* 更新ボタン */

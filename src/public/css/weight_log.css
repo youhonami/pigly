@@ -58,8 +58,34 @@ textarea {
 
 .btn-cancel {
     background-color: #ccc;
+    text-decoration: none;
+}
+
+.btn-cancel:hover {
+    text-decoration: none;
 }
 
 .btn-submit {
     background: linear-gradient(to right, #ae8bf0, #f7b1d6);
+    text-decoration: none;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    margin-left: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+.btn-delete i {
+    margin: 0;
 }

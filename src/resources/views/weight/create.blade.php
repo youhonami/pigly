@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="log-container">
-    <h2 class="log-title">Weight Log</h2>
+    <h2 class="log-title">Weight Logを追加</h2>
 
     <form method="POST" action="{{ route('weight.store') }}">
         @csrf

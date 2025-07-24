@@ -78,4 +78,18 @@ class WeightLogController extends Controller
 
         return redirect()->route('index')->with('success', 'データを更新しました');
     }
+
+    public function destroy($id)
+    {
+        $log = WeightLog::findOrFail($id);
+
+        // 認可チェック（必要に応じて）
+        if ($log->user_id !== auth()->id()) {
+            abort(403, '権限がありません');
+        }
+
+        $log->delete();
+
+        return redirect()->route('index')->with('status', 'データを削除しました。');
+    }
 }

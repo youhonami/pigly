@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="log-container">
-    <h2 class="log-title">Weight Log 編集</h2>
+    <h2 class="log-title">Weight Log</h2>
 
     <form method="POST" action="{{ route('weight.update', $log->id) }}">
         @csrf
@@ -40,6 +40,14 @@
         <div class="form-buttons">
             <a href="{{ route('index') }}" class="btn-cancel">戻る</a>
             <button type="submit" class="btn-submit">更新</button>
+
+            <form method="POST" action="{{ route('weight.destroy', $log->id) }}" style="display:inline;" onsubmit="return confirm('本当に削除しますか？');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn-delete">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </form>
         </div>
     </form>
 </div>

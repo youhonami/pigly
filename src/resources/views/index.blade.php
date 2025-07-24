@@ -67,11 +67,11 @@
                     <td>{{ $log->calories }}cal</td>
                     <td>{{ $log->exercise_time }}</td>
                     <td>
-                        <a href="{{ route('weight.edit', $log->id) }}">
-                            <img src="{{ asset('images/edit-icon.svg') }}" alt="編集" />
+                        <a href="{{ route('weight.edit', $log->id) }}" class="edit-icon">
+                            <i class="fas fa-pen"></i>
                         </a>
-
                     </td>
+
                 </tr>
                 @endforeach
             </tbody>
