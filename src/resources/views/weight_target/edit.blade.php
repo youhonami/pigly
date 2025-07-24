@@ -10,13 +10,15 @@
 
     <form method="POST" action="{{ route('weight.target.update') }}">
         @csrf
+        @method('PUT')
         <div class="input-group">
-            <input type="number" name="target_weight" value="{{ old('target_weight', optional($target)->target_weight) }}" step="0.1" required> kg
+            <input type="text" name="target_weight" value="{{ old('target_weight', optional($target)->target_weight) }}" step="0.1"> kg
         </div>
 
         @error('target_weight')
         <p class="error">{{ $message }}</p>
         @enderror
+
 
         <div class="buttons">
             <a href="{{ route('index') }}" class="btn-cancel">戻る</a>

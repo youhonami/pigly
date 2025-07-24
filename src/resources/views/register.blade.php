@@ -17,16 +17,20 @@
             @csrf
 
             <label for="name">お名前</label>
-            <input type="text" id="name" name="name" placeholder="名前を入力" required>
+            <input type="text" name="name" value="{{ old('name') }}">
+            @error('name') <p class="error">{{ $message }}</p> @enderror
 
             <label for="email">メールアドレス</label>
-            <input type="email" id="email" name="email" placeholder="メールアドレスを入力" required>
+            <input type="text" name="email" value="{{ old('email') }}">
+            @error('email') <p class="error">{{ $message }}</p> @enderror
 
             <label for="password">パスワード</label>
-            <input type="password" id="password" name="password" placeholder="パスワードを入力" required>
+            <input type="password" name="password">
+            @error('password') <p class="error">{{ $message }}</p> @enderror
 
             <button type="submit">次に進む</button>
         </form>
+
 
         <a href="{{ route('login') }}">ログインはこちら</a>
     </div>

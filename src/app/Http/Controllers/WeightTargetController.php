@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdateTargetWeightRequest;
 
 class WeightTargetController extends Controller
 {
@@ -14,18 +15,21 @@ class WeightTargetController extends Controller
         return view('weight_target.edit', compact('target'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateTargetWeightRequest $request)
     {
-        $request->validate([
-            'target_weight' => ['required', 'numeric', 'min:0'],
-        ]);
+        $user = auth()->user();
 
-        $user = Auth::user();
-        $user->weightTarget()->updateOrCreate(
-            ['user_id' => $user->id],
-            ['target_weight' => $request->target_weight]
-        );
+        $target = $user->weightTarget;
+        if ($target) {
+            $target->update([
+                'target_weight' => $request->input('target_weight'),
+            ]);
+        } else {
+            $user->weightTarget()->create([
+                'target_weight' => $request->input('target_weight'),
+            ]);
+        }
 
-        return redirect()->route('index')->with('success', '目標体重を更新しました');
+        return redirect()->route('index')->with('success', '目標体重を更新しました。');
     }
 }

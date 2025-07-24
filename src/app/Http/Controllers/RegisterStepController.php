@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\WeightRegisterRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\WeightLog;
 use App\Models\WeightTarget;
@@ -14,13 +14,8 @@ class RegisterStepController extends Controller
         return view('register_step2');
     }
 
-    public function storeStep2(Request $request)
+    public function storeStep2(WeightRegisterRequest $request)
     {
-        $request->validate([
-            'current_weight' => 'required|numeric|min:20|max:300',
-            'target_weight' => 'required|numeric|min:20|max:300',
-        ]);
-
         $user = Auth::user();
 
         // 現在の体重ログを保存
@@ -39,7 +34,6 @@ class RegisterStepController extends Controller
             'target_weight' => $request->target_weight,
         ]);
 
-        // ✅ ここで index.blade.php へリダイレクト
         return redirect('/index')->with('success', 'アカウントが作成されました！');
     }
 }
