@@ -40,7 +40,6 @@ Route::middleware(['auth'])->group(function () {
 //目標体重設定
 Route::middleware(['auth'])->group(function () {
     Route::get('/weight/target/edit', [WeightTargetController::class, 'edit'])->name('weight.target.edit');
-    Route::post('/weight/target/update', [WeightTargetController::class, 'update'])->name('weight.target.update');
 });
 //ログアウト
 Route::get('/', function () {
@@ -56,4 +55,5 @@ Route::middleware(['auth'])->group(function () {
 
 Route::delete('/weight/{id}', [WeightLogController::class, 'destroy'])->name('weight.destroy');
 
+// 目標体重の更新ルートは PUT に変更（formに合わせる）
 Route::put('/weight/target/update', [WeightTargetController::class, 'update'])->name('weight.target.update');

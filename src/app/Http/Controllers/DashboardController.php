@@ -36,7 +36,7 @@ class DashboardController extends Controller
         }
 
         // ページネーション
-        $weightLogs = $query->paginate(10)->appends($request->all());
+        $weightLogs = $query->paginate(8)->appends($request->all());
 
         return view('index', compact(
             'targetWeight',

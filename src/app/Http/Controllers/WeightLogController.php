@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\WeightLog;
+use App\Http\Requests\StoreWeightLogRequest;
 
 class WeightLogController extends Controller
 {
@@ -19,15 +20,8 @@ class WeightLogController extends Controller
     /**
      * 体重記録を保存
      */
-    public function store(Request $request)
+    public function store(StoreWeightLogRequest $request)
     {
-        $request->validate([
-            'date' => 'required|date',
-            'weight' => 'required|numeric|min:0',
-            'calorie' => 'required|numeric|min:0',
-            'exercise_time' => 'nullable',
-            'exercise_detail' => 'nullable|string|max:1000',
-        ]);
 
         WeightLog::create([
             'user_id' => Auth::id(),

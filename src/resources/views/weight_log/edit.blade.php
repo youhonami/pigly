@@ -8,6 +8,7 @@
 <div class="log-container">
     <h2 class="log-title">Weight Log</h2>
 
+    {{-- 更新フォーム --}}
     <form method="POST" action="{{ route('weight.update', $log->id) }}">
         @csrf
         @method('PUT')
@@ -29,7 +30,12 @@
 
         <div class="form-group">
             <label for="exercise_time">運動時間</label>
-            <input type="time" id="exercise_time" name="exercise_time" value="{{ old('exercise_time', $log->exercise_time ?? '00:00') }}">
+            <input
+                type="time"
+                id="exercise_time"
+                name="exercise_time"
+                value="{{ old('exercise_time', \Carbon\Carbon::parse($log->exercise_time ?? '00:00:00')->format('H:i')) }}"
+                step="60" />
         </div>
 
         <div class="form-group">
@@ -37,18 +43,24 @@
             <textarea id="exercise_detail" name="exercise_detail" rows="4">{{ old('exercise_detail', $log->exercise_content) }}</textarea>
         </div>
 
-        <div class="form-buttons">
-            <a href="{{ route('index') }}" class="btn-cancel">戻る</a>
-            <button type="submit" class="btn-submit">更新</button>
+        <div class="form-buttons-wrapper">
+            {{-- 更新フォーム --}}
+            <form method="POST" action="{{ route('weight.update', $log->id) }}" class="form-inline">
+                @csrf
+                @method('PUT')
+                <a href="{{ route('index') }}" class="btn-cancel">戻る</a>
+                <button type="submit" class="btn-submit">更新</button>
+            </form>
 
-            <form method="POST" action="{{ route('weight.destroy', $log->id) }}" style="display:inline;" onsubmit="return confirm('本当に削除しますか？');">
+            {{-- 削除フォーム --}}
+            <form method="POST" action="{{ route('weight.destroy', $log->id) }}" class="form-inline">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn-delete">
+                <button type="submit" class="btn-delete" title="削除">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </form>
         </div>
-    </form>
+
 </div>
 @endsection

@@ -89,3 +89,23 @@ textarea {
 .btn-delete i {
     margin: 0;
 }
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.form-buttons-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px; /* ボタン間の余白 */
+    margin-top: 30px;
+}
+
+.form-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
