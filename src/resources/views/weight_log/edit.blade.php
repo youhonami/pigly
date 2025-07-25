@@ -15,17 +15,30 @@
 
         <div class="form-group">
             <label for="date">日付</label>
-            <input type="date" id="date" name="date" value="{{ old('date', $log->date) }}" required>
+            <input type="date" id="date" name="date" value="{{ old('date', $log->date) }}">
+            @error('date')
+            <p class="error">{{ $message }}</p>
+            @enderror
+
         </div>
 
         <div class="form-group">
             <label for="weight">体重</label>
-            <input type="number" id="weight" name="weight" step="0.1" value="{{ old('weight', $log->weight) }}" required> kg
+            <input type="number" id="weight" name="weight" step="any" value="{{ old('weight', $log->weight) }}">
+            kg
+            @error('weight')
+            <p class="error">{{ $message }}</p>
+            @enderror
+
         </div>
 
         <div class="form-group">
             <label for="calorie">摂取カロリー</label>
-            <input type="number" id="calorie" name="calorie" value="{{ old('calorie', $log->calories) }}" required> cal
+            <input type="number" id="calorie" name="calorie" value="{{ old('calorie', $log->calories) }}"> cal
+            @error('calorie')
+            <p class="error">{{ $message }}</p>
+            @enderror
+
         </div>
 
         <div class="form-group">
@@ -36,11 +49,16 @@
                 name="exercise_time"
                 value="{{ old('exercise_time', \Carbon\Carbon::parse($log->exercise_time ?? '00:00:00')->format('H:i')) }}"
                 step="60" />
+            @error('exercise_time')
+            <p class="error">{{ $message }}</p>
+            @enderror
+
         </div>
 
         <div class="form-group">
             <label for="exercise_detail">運動内容</label>
             <textarea id="exercise_detail" name="exercise_detail" rows="4">{{ old('exercise_detail', $log->exercise_content) }}</textarea>
+
         </div>
 
         <div class="form-buttons-wrapper">

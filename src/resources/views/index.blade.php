@@ -67,12 +67,17 @@
                     <td>{{ $log->calories }}cal</td>
                     <td>
                         @php
-                        $timeParts = explode(':', $log->exercise_time); // ['HH', 'MM', 'SS']
+                        $timeParts = explode(':', $log->exercise_time);
+                        if (count($timeParts) >= 2) {
                         $hours = str_pad((int) $timeParts[0], 2, '0', STR_PAD_LEFT);
                         $minutes = str_pad((int) $timeParts[1], 2, '0', STR_PAD_LEFT);
+                        echo "{$hours}:{$minutes}";
+                        } else {
+                        echo '--:--';
+                        }
                         @endphp
-                        {{ $hours }}:{{ $minutes }}
                     </td>
+
                     <td>
                         <a href="{{ route('weight.edit', $log->id) }}" class="edit-icon">
                             <i class="fas fa-pen"></i>

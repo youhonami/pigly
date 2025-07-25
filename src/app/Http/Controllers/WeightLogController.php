@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\WeightLog;
 use App\Http\Requests\StoreWeightLogRequest;
+use App\Http\Requests\UpdateWeightLogRequest;
 
 class WeightLogController extends Controller
 {
@@ -46,7 +47,7 @@ class WeightLogController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UpdateWeightLogRequest $request, $id)
     {
         $log = WeightLog::findOrFail($id);
 
